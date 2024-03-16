@@ -78,6 +78,7 @@ const playmusic=(track,pause=false)=>{
 
 //displayAlbum Function
 async function displayAlbums(){
+    console.log("Displaying the albums")
 let a=await fetch(`/songs/`)
 console.log(a)
 let response = await a.text()
@@ -89,7 +90,7 @@ let response = await a.text()
     let array=Array.from(anchors)
     for (let index = 0; index < array.length; index++) {
         const e = array[index];
-        if(e.href.includes("/songs/") && !e.href.includes(".htaccess")){
+        if(e.href.includes("/songs") && !e.href.includes(".htaccess")){
             let folder=e.href.split("/").slice(-1)[0]
             //get meta data of folder
             let a=await fetch(`/songs/${folder}/info.json`)
