@@ -16,7 +16,7 @@ function convertTime(seconds) {
 
 async function getsongs(folder) {
     currFolder=folder
-    let a = await fetch(`/${folder}/`)
+    let a = await fetch(`/${folder}`)
     let response = await a.text()
     let div = document.createElement("div")
     div.innerHTML = response
@@ -26,7 +26,7 @@ async function getsongs(folder) {
     for (let index = 0; index < as.length; index++) {
         const element = as[index];
         if (element.href.endsWith(".mp3")) {
-            songs.push(element.href.split(`/${folder}/`)[1])
+            songs.push(element.href.split(`/${folder}`)[1])
         }
 
     }
@@ -65,7 +65,7 @@ async function getsongs(folder) {
 
 // Play Music
 const playmusic=(track,pause=false)=>{
-    currentSong.src=`/${currFolder}/`+track
+    currentSong.src=`/${currFolder}`+track
     if(!pause){
         currentSong.play()
         play.src="svg/pause.svg"
